@@ -1,6 +1,6 @@
 # Fun_with_Numbers
 
-# this program gives 4 options:
+## this program gives 4 options
 
     1) find the prime number that is at a location user inputed
         ex- if the user inputs 500, it will return the 500th prime
@@ -17,7 +17,7 @@
     you chose one of the options and input your number at the prompt and the program returns the answer
         the first option will print out the current location it is at
 
-## to download and compile: 
+### to download and compile: 
     from terminal
         git clone https://github.com/AlphaGainzzz/Fun_with_Numbers.git
     
