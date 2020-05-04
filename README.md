@@ -17,6 +17,8 @@
 you chose one of the options and input your number at the prompt and the program returns the answer
     the first option will print out the current location it is at
 
+I plan on adding more to this as time goes on. But the original, the one I used for cs50, only had these four options
+
 ### to download and compile: 
     from terminal
         git clone https://github.com/AlphaGainzzz/Fun_with_Numbers.git
@@ -26,5 +28,3 @@ you chose one of the options and input your number at the prompt and the program
 
     to run
         ./Fun_with_Numbers
-
-I plan on adding more to this as time goes on. But the original, the one I used for cs50, only had these four options
