@@ -20,7 +20,7 @@ you chose one of the options and input your number at the prompt and the program
 - I plan on adding more to this as time goes on. But the original, the one I used for cs50, only had these four options
 
 ### to download and compile (linux, debian based): 
-	git clone https://github.com/AlphaGainzzz/Fun_with_Numbers.git
+	git clone https://github.com/raymond50romero/Fun_with_Numbers.git
 	cd Fun_with_Numbers
 	clang Fun_with_Numbers.c -o Fun_with_Numbers -lm
 	./Fun_with_Numbers
