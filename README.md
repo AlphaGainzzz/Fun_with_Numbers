@@ -1,6 +1,6 @@
 # Fun_with_Numbers
 
-## this program gives 4 options
+## this program gives 5 options
 
 1) find the prime number that is at a location user inputed
     ex- if the user inputs 500, it will return the 500th prime
@@ -14,6 +14,9 @@
 4) find all the factors of a number
     ex- if the user inputs 10, it will return 1, 2, 5, 10. if the user inputs 5, it returns 1, 5
 
+5) find the unique prime factorizaton of a non prime number
+   ex- if the user inputs 32, the result will be 2 2 2 2 2
+   
 you chose one of the options and input your number at the prompt and the program returns the answer
     the first option will print out the current location it is at
 
