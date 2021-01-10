@@ -1,5 +1,3 @@
-//work in progress
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -22,64 +20,104 @@ int main(void)
 {
     int prime;
     long primenum;
-    int option;
+    char option;
     do
     {
-        printf("what would you like to do?\n");
-        printf("1) Find prime number in location x\n");
-        printf("2) Find sum of all primes before location x (use option 1 to find x)\n");
-        printf("3) Find if number is prime\n");
-        printf("4) Find factors of number\n");
+        printf("\tFUN WITH NUMBERS\n\n");
+        printf("1) Find prime number in location x.\n");
+        printf("2) Find sum of all primes before location x.\n");
+        printf("3) Find if number is prime.\n");
+        printf("4) Find factors of number.\n");
+        printf("5) Prime factorization of number.\n");
+        printf("PRESS 'q' or 'Q' to exit.\n");
         printf("\n");
-        printf("enter number (Q to quit): ");
-        scanf("%i", &option);
-    } while (option < 1 || option > 4);
+        printf("Choose one of the options above: ");
+        scanf("%c", &option);
+        if(option=='Q' || option=='q')
+        {
+            printf("Exited.\n");
+            return 1;
+        }
+    } while (option < '1' || option > '5');
 
-    if (option == 1)
+    if (option == '1')
     {
-        printf("enter x location: ");
+        printf("Enter x location: ");
         scanf("%i", &prime);
         unsigned long primeNumber = find_prime(prime);
-        printf(primeNumber == 0 ? "number not found\n" : "found: %lu\n", primeNumber);
+        if(primeNumber == 0)
+            if(prime==1)
+                printf("Found: 2\n");
+            else
+                printf("Number not found.\n");
+        else
+            printf("Found: %lu\n", primeNumber);
         unload();
         return 0;
     }
 
-    if (option == 2)
+    if (option == '2')
     {
-        printf("enter x location: ");
+        printf("Enter x location: ");
         scanf("%i", &prime);
         long answer = find_prime_sum(find_prime(prime));
-        printf(answer == 0 ? "number cannot be found" : "the summation is: %li\n", answer);
+        printf(answer == 0 ? "Number couldn't be found." : "The summation is: %li\n", answer);
         unload();
         return 0;
     }
 
-    if (option == 3)
+    if (option == '3')
     {
-        printf("enter number: ");
+        printf("Enter number: ");
         scanf("%li", &primenum);
         int result = prime_number(primenum);
-        printf(result == 1 ? "number is prime\n" : "number is not prime\n");
+        if(result)
+            printf("Number %li is prime.\n", primenum);
+        else
+            printf("Number %li is not prime.\n", primenum);
         unload();
         return 0;
     }
 
-    if (option == 4)
+    if (option == '4')
     {
-        printf("enter number: ");
+        printf("Enter number: ");
         scanf("%i", &prime);
         int result = prime_number((long)prime);
         if (result == 1)
-            printf("number is prime: 1, %i", prime);
+            printf("Number %i is prime.\n", prime);
         else
             factors(prime);
         unload();
         return 0;
     }
+
+    if( option == '5')
+    {
+        printf("Enter number: ");
+        scanf("%li", &primenum);
+        if(prime_number(primenum))
+        {
+            printf("The number %li is prime.\n", primenum);
+        }
+        else
+        {
+            for(int i=2; i<=primenum;){
+            if(primenum%i==0){
+                printf("%d ", i);
+                primenum/=i;
+                i=2;
+            }
+            else
+                i++;
+            }
+        }
+        printf("\n");
+
+    }
 }
 
-// option 1, find prime number in location x
+// option 1: find prime number in location x
 node *root_primes;
 node *traverse;
 node *prime_numbers;
@@ -115,8 +153,6 @@ unsigned long find_prime(int num)
                 if (prime_numbers == NULL)
                     return 0;
 
-                printf("%i\n", count);
-
                 prime_numbers->number = current_number;
                 prime_numbers->next = NULL;
                 if (root_primes->next == NULL)
@@ -134,22 +170,8 @@ unsigned long find_prime(int num)
     return 0;
 }
 
-// option 2, find if number is prime
-int prime_number(long user)
-{
-    unsigned int square_root = (int)round(sqrt(user));
-    int current_number = 2; // number we are using to find prime
 
-    while (current_number <= square_root)
-    {
-        if (user % current_number == 0)
-            return 0;
-        current_number++;
-    }
-    return 1;
-}
-
-// option 3, find sum of all primes below given location of prime
+// option 2: find sum of all primes below given location of prime
 long find_prime_sum(int findprime)
 {
     // findprime returns the result of find_prime
@@ -167,16 +189,35 @@ long find_prime_sum(int findprime)
     return 0;
 }
 
-// option 4, find all the factors of a number
+// option 3: find if number is prime
+int prime_number(long user)
+{
+    unsigned int square_root = (int)round(sqrt(user));
+    int current_number = 2; // number we are using to find prime
+
+    while (current_number <= square_root)
+    {
+        if (user % current_number == 0)
+            return 0;
+        current_number++;
+    }
+    return 1;
+}
+
+// option 4: find all the factors of a number
 void factors(int number)
 {
 
     for (int i = 1; i <= number; i++)
     {
         if (number % i == 0)
-            printf("%i, ", i);
+        {
+            printf("%i", i);
+            if (i != number)
+                printf(", ");
+        }
         if (i == number)
-            printf("\n");
+            printf(".\n");
     }
 }
 
